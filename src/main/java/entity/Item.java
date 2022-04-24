@@ -18,6 +18,8 @@ public class Item {
     private Integer stockQuantity;
     @OneToMany(mappedBy = "item")
     private List<OrderItem> orderItems = new ArrayList<>();
+    @ManyToMany(mappedBy = "items")
+    private List<Category> category = new ArrayList<>();
 
     public List<OrderItem> getOrderItems() {
         return orderItems;

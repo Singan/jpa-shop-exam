@@ -25,6 +25,10 @@ public class Orders {
     @Column(name="order_status")
     private OrderStatus orderStatus;
 
+    @JoinColumn(name="delivery_id")
+    @OneToOne
+    private Delivery delivery;
+
     public Orders() {
     }
     public void addOrderItem(OrderItem orderItem){
