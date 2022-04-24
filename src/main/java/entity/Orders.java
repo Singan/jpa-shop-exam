@@ -1,12 +1,14 @@
 package entity;
 
+import entity.Enum.OrderStatus;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Orders {
+public class Orders extends BaseEntity{
     @Id @GeneratedValue
     @Column(name="order_id")
     private Long id;

@@ -6,9 +6,12 @@
         <class>entity.Item</class>
         <class>entity.Orders</class>
         <class>entity.OrderItem</class>
-        <class>entity.OrderStatus</class>
+        <class>entity.Enum.OrderStatus</class>
         <class>entity.Delivery</class>
         <class>entity.Category</class>
+        <class>entity.Book</class>
+        <class>entity.Album</class>
+        <class>entity.Movie</class>
         <properties>
             <!-- 필수 속성 -->
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
@@ -19,7 +22,7 @@
 
             <!-- 옵션 -->
             <!--<property name="hibernate.hbm2ddl.auto" value="create" />-->
-
+            <property name="hibernate.hbm2ddl.auto" value="create"></property>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
