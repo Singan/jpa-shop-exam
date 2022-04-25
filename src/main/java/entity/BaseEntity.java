@@ -7,7 +7,8 @@ import java.time.LocalDateTime;
 public class BaseEntity {
     private LocalDateTime writeTime;
     private LocalDateTime modifiedTime;
-
+    private String writer;
+    private String modifiedWriter;
     public LocalDateTime getWriteTime() {
         return writeTime;
     }

@@ -5,9 +5,9 @@ import javax.persistence.Entity;
 
 @Entity
 public class Book extends Item{
-    @Column(name="book_author")
+
     private String author;
-    @Column(name="book_isbn")
+
     private String isbn;
 
     public String getAuthor() {
@@ -17,6 +17,9 @@ public class Book extends Item{
     public void setAuthor(String author) {
         this.author = author;
     }
+
+
+
 
     public String getIsbn() {
         return isbn;
