@@ -13,14 +13,13 @@ public class Main {
         EntityTransaction et = em.getTransaction();
 
         et.begin();
-        Book book = new Book();
-        book.setName("1번책");
-        book.setAuthor("ㅁㄴㅇㅁㄴㅇ");
-        book.setIsbn("asdfasdf");
-        book.setWriteTime(LocalDateTime.now());
-        em.persist(book);
-
-
+        Member member = new Member();
+        member.setName("나");
+        em.persist(member);
+        em.flush();
+        em.clear();
+        Member m = em.getReference(Member.class,member.getId());
+        System.out.println(m.getName());;
         et.commit();
         em.close();
         emt.close();
