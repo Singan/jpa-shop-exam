@@ -18,8 +18,9 @@ public class Main {
         em.persist(member);
         em.flush();
         em.clear();
-        Member m = em.getReference(Member.class,member.getId());
-        System.out.println(m.getName());;
+        Member m1 = em.getReference(Member.class,1L);
+        Member m2 = em.find(Member.class,1L);
+        System.out.println(m1.getClass()==m2.getClass());
         et.commit();
         em.close();
         emt.close();

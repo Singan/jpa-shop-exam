@@ -4,6 +4,8 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.persistence.FetchType.LAZY;
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn
@@ -18,7 +20,7 @@ public class Item extends BaseEntity{
     private Integer price;
     @Column(name="item_stockQuantity")
     private Integer stockQuantity;
-    @OneToMany(mappedBy = "item")
+    @OneToMany(mappedBy = "item" )
     private List<OrderItem> orderItems = new ArrayList<>();
     @ManyToMany(mappedBy = "items")
     private List<Category> category = new ArrayList<>();

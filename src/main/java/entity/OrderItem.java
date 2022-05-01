@@ -2,6 +2,8 @@ package entity;
 
 import javax.persistence.*;
 
+import static javax.persistence.FetchType.LAZY;
+
 @Entity
 public class OrderItem extends BaseEntity{
     @Id @GeneratedValue
@@ -9,10 +11,10 @@ public class OrderItem extends BaseEntity{
     private Long id;
 
     @JoinColumn(name = "order_id")
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     private Orders orders;
     @JoinColumn(name = "item_id")
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     private Item item;
     @Column(name = "order_price")
     private Integer orderPrice;

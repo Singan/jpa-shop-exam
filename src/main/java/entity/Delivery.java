@@ -4,6 +4,8 @@ import entity.Enum.DeliveryStatus;
 
 import javax.persistence.*;
 
+import static javax.persistence.FetchType.LAZY;
+
 @Entity
 public class Delivery extends BaseEntity{
     @Id @GeneratedValue
@@ -19,7 +21,7 @@ public class Delivery extends BaseEntity{
     @Column(name = "delivery_status")
     private DeliveryStatus deliveryStatus;
 
-    @OneToOne(mappedBy = "delivery")
+    @OneToOne(mappedBy = "delivery",fetch = LAZY)
     private Orders orders;
     public Long getId() {
         return id;

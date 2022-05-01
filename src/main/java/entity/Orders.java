@@ -7,17 +7,19 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.persistence.FetchType.LAZY;
+
 @Entity
 public class Orders extends BaseEntity{
     @Id @GeneratedValue
     @Column(name="order_id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name="member_id")
     private Member member;
 
-    @OneToMany(mappedBy = "orders")
+    @OneToMany(mappedBy = "orders",fetch = LAZY)
     private List<OrderItem> orderItemList = new ArrayList<>();
 
     @Column(name="order_date")
@@ -28,7 +30,7 @@ public class Orders extends BaseEntity{
     private OrderStatus orderStatus;
 
     @JoinColumn(name="delivery_id")
-    @OneToOne
+    @OneToOne(fetch = LAZY)
     private Delivery delivery;
 
     public Orders() {
