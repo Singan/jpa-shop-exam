@@ -16,11 +16,10 @@ public class Main {
         Member member = new Member();
         member.setName("나");
         em.persist(member);
-        em.flush();
-        em.clear();
-        Member m1 = em.getReference(Member.class,1L);
-        Member m2 = em.find(Member.class,1L);
-        System.out.println(m1.getClass()==m2.getClass());
+
+        System.out.println("member.get" + member.getId());
+
+        System.out.println("커밋전");
         et.commit();
         em.close();
         emt.close();
