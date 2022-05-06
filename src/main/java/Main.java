@@ -16,12 +16,16 @@ public class Main {
         EntityTransaction et = em.getTransaction();
         String input = "이무개";
         String query = "select m from Member as m";
+        et.begin();
         if(input != null)
             query += " where m.name = '" + input+"'";
+
 
         Member l =  em.createQuery(query,Member.class).getSingleResult();
         System.out.println(l);
         //et.commit();
+
+
         em.close();
         emt.close();
     }

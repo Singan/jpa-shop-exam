@@ -14,45 +14,15 @@ public class Member extends BaseEntity{
     private Long id;
     @Column(name = "member_name")
     private String name;
-    @Column(name = "member_city")
-    private String city;
-    @Column(name = "member_street")
-    private String street;
-    @Column(name = "member_zipcode")
-    private String zipcode;
-
-
-
     @OneToMany(mappedBy = "member")
     private List<Orders> orders = new ArrayList<>();
-
+    @Embedded
+    private Address address;
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String getCity() {
-        return city;
-    }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
-    }
 
     public Member() {
     }
@@ -68,12 +38,19 @@ public class Member extends BaseEntity{
     public String getName() {
         return name;
     }
+    public Address getAddress() {
+        return address;
+    }
 
-    public List<Orders> getOrder() {
+    public List<Orders> getOrders() {
         return orders;
     }
 
-    public void setOrder(List<Orders> orders) {
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public void setOrders(List<Orders> orders) {
         this.orders = orders;
     }
 
@@ -82,9 +59,6 @@ public class Member extends BaseEntity{
         return "Member{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", city='" + city + '\'' +
-                ", street='" + street + '\'' +
-                ", zipcode='" + zipcode + '\'' +
                 ", orders=" + orders +
                 '}';
     }
