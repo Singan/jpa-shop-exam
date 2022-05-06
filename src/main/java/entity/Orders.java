@@ -19,7 +19,7 @@ public class Orders extends BaseEntity{
     @JoinColumn(name="member_id")
     private Member member;
 
-    @OneToMany(mappedBy = "orders",fetch = LAZY)
+    @OneToMany(mappedBy = "orders",fetch = LAZY,cascade = CascadeType.ALL)
     private List<OrderItem> orderItemList = new ArrayList<>();
 
     @Column(name="order_date")
@@ -30,7 +30,7 @@ public class Orders extends BaseEntity{
     private OrderStatus orderStatus;
 
     @JoinColumn(name="delivery_id")
-    @OneToOne(fetch = LAZY)
+    @OneToOne(fetch = LAZY,cascade = CascadeType.ALL)
     private Delivery delivery;
 
     public Orders() {
