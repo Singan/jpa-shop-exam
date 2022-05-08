@@ -14,6 +14,8 @@ public class Member extends BaseEntity{
     private Long id;
     @Column(name = "member_name")
     private String name;
+    @Column(name = "member_age")
+    private Long age;
     @OneToMany(mappedBy = "member")
     private List<Orders> orders = new ArrayList<>();
     @Embedded
@@ -21,8 +23,6 @@ public class Member extends BaseEntity{
     public void setId(Long id) {
         this.id = id;
     }
-
-
 
     public Member() {
     }
@@ -54,12 +54,22 @@ public class Member extends BaseEntity{
         this.orders = orders;
     }
 
+    public Long getAge() {
+        return age;
+    }
+
+    public void setAge(Long age) {
+        this.age = age;
+    }
+
     @Override
     public String toString() {
         return "Member{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", age=" + age +
                 ", orders=" + orders +
+                ", address=" + address +
                 '}';
     }
 }

@@ -79,4 +79,15 @@ public class Orders extends BaseEntity{
     public void setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus;
     }
+
+    @Override
+    public String toString() {
+        return "Orders{" +
+                "id=" + id +
+                ", orderItemList=" + orderItemList +
+                ", orderDate=" + orderDate +
+                ", orderStatus=" + orderStatus +
+                ", delivery=" + delivery +
+                '}';
+    }
 }

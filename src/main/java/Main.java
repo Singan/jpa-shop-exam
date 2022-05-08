@@ -1,9 +1,11 @@
 import entity.*;
+import entity.Enum.OrderStatus;
+import org.hibernate.Criteria;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,16 +16,22 @@ public class Main {
         EntityManagerFactory emt = Persistence.createEntityManagerFactory("hello");
         EntityManager em = emt.createEntityManager();
         EntityTransaction et = em.getTransaction();
-        String input = "이무개";
-        String query = "select m from Member as m";
+
+
         et.begin();
-        if(input != null)
-            query += " where m.name = '" + input+"'";
+        TypedQuery<String> query = em.createQuery("select " +
+                "case when m.age >13 then :중 " +
+                "when m.age >8 then :초 " +
+                "else '외' end " +
+                "from Member m ", String.class).
+                setParameter("초","초등학생이상").
+                setParameter("중","중학생이상");
+        List<String> member = query.getResultList();
 
-
-        Member l =  em.createQuery(query,Member.class).getSingleResult();
-        System.out.println(l);
-        //et.commit();
+        for (String m : member) {
+            System.out.println(m);
+        }
+        et.commit();
 
 
         em.close();
