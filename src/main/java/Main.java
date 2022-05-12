@@ -19,17 +19,14 @@ public class Main {
 
 
         et.begin();
-        TypedQuery<String> query = em.createQuery("select " +
-                "case when m.age >13 then :중 " +
-                "when m.age >8 then :초 " +
-                "else '외' end " +
-                "from Member m ", String.class).
-                setParameter("초","초등학생이상").
-                setParameter("중","중학생이상");
-        List<String> member = query.getResultList();
+/*       TypedQuery<People> query = em.createQuery("select p from People p",People.class).setFirstResult(0).setMaxResults(3);
+        List<People> people = query.getResultList();*/
 
-        for (String m : member) {
-            System.out.println(m);
+
+        List<Team>  teams = em.createQuery("select t from Team t",Team.class).setMaxResults(6).getResultList();
+        for (Team p : teams) {
+            System.out.println("p 조회전 ----------------------------");
+            System.out.println(p);
         }
         et.commit();
 

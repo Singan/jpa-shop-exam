@@ -84,7 +84,6 @@ public class Orders extends BaseEntity{
     public String toString() {
         return "Orders{" +
                 "id=" + id +
-                ", orderItemList=" + orderItemList +
                 ", orderDate=" + orderDate +
                 ", orderStatus=" + orderStatus +
                 ", delivery=" + delivery +

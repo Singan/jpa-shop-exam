@@ -7,6 +7,7 @@ import java.util.List;
 import static javax.persistence.FetchType.LAZY;
 
 @Entity
+@NamedQuery(name = "member.find",query = "select m from Member m where m.id = :member")
 public class Member extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
